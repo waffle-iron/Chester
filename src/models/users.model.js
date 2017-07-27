@@ -20,7 +20,7 @@ module.exports = function(app) {
                     table.integer('security_level').notNullable().defaultTo(0); // 0 - user, 1 - admin, 2 - superadmin
 
                     table.timestamp('last_seen');
-                    table.json('last_logins');
+                    table.json('login_history').defaultTo('{}');
 
                     table.timestamp('created_at').notNullable();
                     table.timestamp('updated_at');
