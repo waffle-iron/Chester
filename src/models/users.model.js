@@ -13,9 +13,14 @@ module.exports = function(app) {
                 .createTable('users', table => {
                     table.increments('id');
 
+                    table.string('firstname');
+                    table.string('lastname');
                     table.string('email').unique();
                     table.string('password');
                     table.integer('security_level').notNullable().defaultTo(0); // 0 - user, 1 - admin, 2 - superadmin
+
+                    table.timestamp('last_seen');
+                    table.json('login_history').defaultTo('{}');
 
                     table.timestamp('created_at').notNullable();
                     table.timestamp('updated_at');

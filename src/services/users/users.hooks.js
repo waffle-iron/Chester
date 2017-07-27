@@ -22,12 +22,12 @@ module.exports = {
         update: [
             ...restrict,
             hashPassword(),
-            commonHooks.setCreatedAt('updated_at')
+            commonHooks.setUpdatedAt('updated_at')
         ],
         patch: [
             ...restrict,
             hashPassword(),
-            commonHooks.setCreatedAt('updated_at')
+            commonHooks.setUpdatedAt('updated_at')
         ],
         remove: [...restrict, setDeletedAt()]
     },

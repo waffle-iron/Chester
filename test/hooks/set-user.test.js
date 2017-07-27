@@ -1,12 +1,12 @@
 const assert = require('assert');
-const test = require('../../src/hooks/test');
+const setUser = require('../../src/hooks/set-user');
 
-describe('\'test\' hook', () => {
+describe('\'setUser\' hook', () => {
   it('runs the hook', () => {
     // A mock hook object
     const mock = {};
     // Initialize our hook with no options
-    const hook = test();
+    const hook = setUser();
 
     // Run the hook function (which returns a promise)
     // and compare the resulting hook object
