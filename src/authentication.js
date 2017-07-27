@@ -2,7 +2,7 @@ const authentication = require('feathers-authentication');
 const jwt = require('feathers-authentication-jwt');
 const local = require('feathers-authentication-local');
 
-const setLoginHistory = require('hooks/setLoginHistory');
+const setLoginHistory = require('./hooks/set-login-history');
 
 module.exports = function() {
     const app = this;
