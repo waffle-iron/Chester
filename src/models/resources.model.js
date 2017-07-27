@@ -17,7 +17,7 @@ module.exports = function(app) {
                     table.boolean('active').notNullable().defaultTo(true);
                     table.string('timezone').notNullable();
                     table.json('metadata').notNullable();
-                    table.boolean('allow_double_booking').defaultTo(false);
+                    table.json('rules').notNullable();
 
                     table.timestamp('created_at').notNullable();
                     table.timestamp('updated_at');
