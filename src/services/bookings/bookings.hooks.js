@@ -6,13 +6,14 @@ const {
 } = require('feathers-hooks-common');
 const setDeletedAt = require('../../hooks/setDeletedAt');
 const illegalTimeChecker = require('../../hooks/illegalTimeChecker');
+const setUser = require('../../hooks/set-user');
 
 module.exports = {
     before: {
         all: [authenticate('jwt'), softDelete()],
         find: [],
         get: [],
-        create: [illegalTimeChecker(), setCreatedAt('created_at')],
+        create: [illegalTimeChecker(), setCreatedAt('created_at'), setUser()],
         update: [setUpdatedAt('updated_at')],
         patch: [setUpdatedAt('updated_at')],
         remove: [setDeletedAt()]
