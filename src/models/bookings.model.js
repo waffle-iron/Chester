@@ -12,10 +12,11 @@ module.exports = function(app) {
             db.schema
                 .createTable('bookings', table => {
                     table.increments('id').primary();
+                    table.json('user_account');
                     table.string('title').notNullable();
                     table.integer('resource_id').unsigned().notNullable();
                     table.foreign('resource_id').references('resources.id');
-                    table.json('user').notNullable();
+                    table.json('booker').notNullable();
                     table.json('participants');
                     table.timestamp('event_start').notNullable();
                     table.timestamp('event_end').notNullable();
