@@ -1,23 +1,26 @@
 const { authenticate } = require('feathers-authentication').hooks;
 const {
-  setCreatedAt,
-  setUpdatedAt,
-  softDelete
+    setCreatedAt,
+    setUpdatedAt,
+    softDelete,
+    validateSchema
 } = require('feathers-hooks-common');
 const setDeletedAt = require('../../hooks/setDeletedAt');
 const illegalTimeChecker = require('../../hooks/illegalTimeChecker');
 const setUser = require('../../hooks/set-user');
+const validationSchema = require('../../schemas/bookings.validation.json');
+const Ajv = require('ajv');
 
-const validator = require('../../hooks/validator');
+const bookingReducer = require('../../hooks/booking-reducer');
 
 module.exports = {
     before: {
-        all: [authenticate('jwt'), softDelete()],
+        all: [authenticate('jwt'), softDelete(), bookingReducer()],
         find: [],
         get: [],
         create: [
+            validateSchema(validationSchema, Ajv),
             illegalTimeChecker(),
-            validator(),
             setCreatedAt('created_at'),
             setUser()
         ],
