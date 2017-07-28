@@ -6,7 +6,7 @@ module.exports = function(options = {}) {
     return function setUser(hook) {
     // Hooks can either return nothing or a promise
     // that resolves with the `hook` object for asynchronous operations
-        hook.data.account = hook.data.user;
+        hook.data.user_account = hook.data.user;
 
         return Promise.resolve(hook);
     };
