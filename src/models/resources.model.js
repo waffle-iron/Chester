@@ -16,7 +16,7 @@ module.exports = function(app) {
                     table.string('type').notNullable();
                     table.boolean('active').notNullable().defaultTo(true);
                     table.string('timezone').notNullable();
-                    table.json('metadata').notNullable();
+                    table.json('details').notNullable();
                     table.json('rules').notNullable();
 
                     table.timestamp('created_at').notNullable();
