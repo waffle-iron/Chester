@@ -1,0 +1,76 @@
+{
+    "title": "Bookings",
+    "description": "Validation Schema for bookings",
+    "type": "object",
+    "properties": {
+        "additionalProperties": false,
+        "title": {
+            "description": "The title of the booking",
+            "type": "string",
+            "maxLength": 50
+        },
+        "resourceId": {
+            "description": "The ID of the resource, that will be booked",
+            "type": ["string", "integer"],
+            "pattern": "^[1-9][0-9]*$",
+            "minimum": 1
+        },
+        "event": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "start": {
+                    "description": "Start of the event, according to RFC3339",
+                    "format": "date-time"
+                },
+                "end": {
+                    "description": "End of the event, according to RFC3339",
+                    "format": "date-time"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "maximum": 400
+                },
+                "participants": {
+                    "additionalProperties": false,
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "description": "The email of the participant",
+                                "type": "string",
+                                "format": "email"
+                            },
+                            "name": {
+                                "description": "The fullname of the participant",
+                                "type": "string",
+                                "maximum": 100
+                            }
+                        },
+                        "required": ["email", "name"]
+                    }
+                }
+            },
+            "required": ["start", "end", "location"]
+        },
+        "type": {
+            "description": "The type of the event",
+            "type": "string",
+            "enum": [
+                "booking",
+                "confirmation",
+                "recurring"
+            ]
+        }
+    },
+    "required": [
+        "title",
+        "event",
+        "resourceId",
+        "type"
+    ]
+}

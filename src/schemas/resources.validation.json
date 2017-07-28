@@ -1,0 +1,90 @@
+{
+    "title": "Resources",
+    "description": "Validation Schema for recources",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "The name of the resource",
+            "type": "string",
+            "maxLength": 50
+        },
+        "type": {
+            "description": "The type of the resource",
+            "type": "string",
+            "enum": [
+                "thing",
+                "person"
+            ]
+        },
+        "details": {
+            "type": "object",
+            "select": {
+                "$data": "1/type"
+            },
+
+            "selectCases": {
+                "thing": {
+                    "properties": {
+                        "what": {
+                            "type": "string",
+                            "maximum": 40
+                        },
+                        "where": {
+                            "type": "string",
+                            "maximum": 100
+                        },
+                        "description": {
+                            "type": "string",
+                            "maximum": 400
+                        }
+                    }
+                },
+                "person": {
+                    "properties": {
+                        "Firstname": {
+                            "type": "string",
+                            "maximum": 100,
+                            "required": true
+
+                        },
+                        "Lastname": {
+                            "type": "string",
+                            "maximum": 100,
+                            "required": true
+
+                        },
+                        "description": {
+                            "type": "string",
+                            "maximum": 400,
+                            "required": true
+
+                        },
+                        "phone": {
+                            "type": "string",
+                            "required": true
+
+                        },
+                        "address": {
+                            "type": "string",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        },
+        "rules": {
+            "description": "The type of the event",
+            "type": "object",
+            "properties": {
+                "allowDoubleBooking": {
+                    "type": "boolean"
+                }
+            }
+        }
+    },
+    "required": [
+        "title",
+        "type",
+        "details"
+    ]
+}
