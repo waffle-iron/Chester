@@ -13,12 +13,18 @@ const restrict = [
     })
 ];
 
+const validator = require('../../hooks/validator');
+
 module.exports = {
     before: {
         all: [commonHooks.softDelete()],
         find: [authenticate('jwt')],
         get: [...restrict],
-        create: [hashPassword(), commonHooks.setCreatedAt('created_at')],
+        create: [
+            validator(),
+            hashPassword(),
+            commonHooks.setCreatedAt('created_at')
+        ],
         update: [
             ...restrict,
             hashPassword(),
@@ -35,9 +41,9 @@ module.exports = {
     after: {
         all: [
             commonHooks.when(
-                hook => hook.params.provider,
-                commonHooks.discard('password')
-            )
+        hook => hook.params.provider,
+        commonHooks.discard('password')
+      )
         ],
         find: [],
         get: [],
