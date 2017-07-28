@@ -1,13 +1,11 @@
 const { authenticate } = require('feathers-authentication').hooks;
 
-const validator = require('../../hooks/validator');
-
 module.exports = {
     before: {
         all: [authenticate('jwt')],
         find: [],
         get: [],
-        create: [validator()],
+        create: [],
         update: [],
         patch: [],
         remove: []
