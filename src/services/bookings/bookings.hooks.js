@@ -8,8 +8,12 @@ const {
 const setDeletedAt = require('../../hooks/setDeletedAt');
 const illegalTimeChecker = require('../../hooks/illegalTimeChecker');
 const setUser = require('../../hooks/set-user');
+
 const validationSchema = require('../../schemas/bookings.validation.json');
+
 const Ajv = require('ajv');
+const ajv = new Ajv({ allErrors: true, $data: true });
+require('ajv-keywords')(ajv, 'select');
 
 const bookingReducer = require('../../hooks/booking-reducer');
 
@@ -19,7 +23,7 @@ module.exports = {
         find: [],
         get: [],
         create: [
-            validateSchema(validationSchema, Ajv),
+            validateSchema(validationSchema, ajv),
             illegalTimeChecker(),
             setCreatedAt('created_at'),
             setUser()
