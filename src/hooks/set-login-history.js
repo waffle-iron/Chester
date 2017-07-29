@@ -18,10 +18,11 @@ module.exports = function(options = {}) {
             .find({
                 email: hook.data.email
             })
-            .then(usr => {
-                const user = usr.data[0];
+            .then(profile => {
+                const user = profile.data[0];
                 const history = user.login_history;
                 if (Object.keys(history).length >= 10) {
+                    // It deletes the first object ín the JSON object
                     delete history[Object.keys(history)[0]];
                 }
                 user.login_history = Object.assign(history, recentLogin);

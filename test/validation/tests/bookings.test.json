@@ -1,0 +1,11 @@
+{
+    "title": "Kenneths booking",
+    "type": "booking",
+    "resourceId": 2,
+    "event": {
+        "start": "2017-07-26T20:50:00Z",
+        "end": "2017-07-26T20:52:00Z",
+        "location": "here",
+        "description": "there"
+    }
+}

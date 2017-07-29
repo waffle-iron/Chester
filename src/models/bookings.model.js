@@ -12,15 +12,19 @@ module.exports = function(app) {
             db.schema
                 .createTable('bookings', table => {
                     table.increments('id').primary();
-                    table.json('user_account');
+                    table.integer('user_id').notNullable();
                     table.string('title').notNullable();
+                    table.string('description');
+                    table.string('location');
                     table.integer('resource_id').unsigned().notNullable();
                     table.foreign('resource_id').references('resources.id');
-                    table.json('booker').notNullable();
                     table.json('participants');
                     table.timestamp('event_start').notNullable();
                     table.timestamp('event_end').notNullable();
-                    table.integer('event_timezone_offset').notNullable();
+                    table
+                        .integer('event_timezone_offset')
+                        .notNullable()
+                        .defaultTo(new Date().getTimezoneOffset());
                     table.string('type').notNullable();
                     table.boolean('completed').notNullable().defaultTo(false);
 

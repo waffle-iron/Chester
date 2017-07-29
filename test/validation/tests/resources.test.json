@@ -1,0 +1,17 @@
+{
+    "name": "Test resource",
+    "type": "object",
+    "details": {
+        "what": "test",
+        "where": "Here",
+        "description": "Test"
+    },
+    "rules": {
+
+        "allowDoubleBooking": true,
+        "openHours": {
+            "start": "12:00:00",
+            "end": "13:00:00"
+        }
+    }
+}

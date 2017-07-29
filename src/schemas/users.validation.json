@@ -1,0 +1,36 @@
+{
+    "title": "User",
+    "description": "User profile with connections",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "firstname": {
+            "deescription": "First name",
+            "type": "string",
+            "maxLength": 100
+        },
+        "lastname": {
+            "deescription": "Last name",
+            "type": "string",
+            "maxLength": 100
+        },
+        "email": {
+            "description": "The email of the user",
+            "type": "string",
+            "format": "email"
+        },
+        "password": {
+            "description": "The password"
+        },
+        "securityLevel": {
+            "type": "number",
+            "maximum": 2
+        }
+    },
+    "required": [
+        "firstname",
+        "lastname",
+        "email",
+        "password"
+    ]
+}
