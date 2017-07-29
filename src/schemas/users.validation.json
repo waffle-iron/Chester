@@ -2,6 +2,7 @@
     "title": "User",
     "description": "User profile with connections",
     "type": "object",
+    "additionalProperties": false,
     "properties": {
         "firstname": {
             "deescription": "First name",
@@ -21,10 +22,9 @@
         "password": {
             "description": "The password"
         },
-        "security_level": {
+        "securityLevel": {
             "type": "number",
-            "maximum": 2,
-            "maxLength": 1
+            "maximum": 2
         }
     },
     "required": [
