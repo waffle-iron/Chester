@@ -1,6 +1,6 @@
 const Ajv = require('ajv');
 
-const testSchema = require('../../src/schemas/tests/resources.test.json');
+const testSchema = require('./tests/resources.test.json');
 const validationSchema = require('../../src/schemas/resources.validation.json');
 
 let ajv = new Ajv({ allErrors: true, $data: true });
