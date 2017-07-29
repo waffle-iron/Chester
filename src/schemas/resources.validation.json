@@ -2,6 +2,12 @@
     "title": "Resources",
     "description": "Validation Schema for recources",
     "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "name",
+        "type",
+        "details"
+    ],
     "properties": {
         "name": {
             "description": "The name of the resource",
@@ -10,20 +16,27 @@
         },
         "type": {
             "description": "The type of the resource",
-            "type": "string",
             "enum": [
-                "thing",
+                "object",
                 "person"
             ]
+        },
+        "test": {
+            "type": "boolean"
         },
         "details": {
             "type": "object",
             "select": {
-                "$data": "1/type"
+                "$data": "/type"
             },
-
             "selectCases": {
-                "thing": {
+                "object": {
+                    "additionalProperties": false,
+                    "required": [
+                        "what",
+                        "where",
+                        "description"
+                    ],
                     "properties": {
                         "what": {
                             "type": "string",
@@ -40,33 +53,36 @@
                     }
                 },
                 "person": {
+                    "additionalProperties": false,
+                    "required": [
+                        "firstname",
+                        "lastname",
+                        "description",
+                        "phone",
+                        "address"
+                    ],
                     "properties": {
-                        "Firstname": {
+                        "firstname": {
                             "type": "string",
-                            "maximum": 100,
-                            "required": true
+                            "maximum": 100
 
                         },
-                        "Lastname": {
+                        "lastname": {
                             "type": "string",
-                            "maximum": 100,
-                            "required": true
+                            "maximum": 100
 
                         },
                         "description": {
                             "type": "string",
-                            "maximum": 400,
-                            "required": true
+                            "maximum": 400
 
                         },
                         "phone": {
-                            "type": "string",
-                            "required": true
+                            "type": "string"
 
                         },
                         "address": {
-                            "type": "string",
-                            "required": true
+                            "type": "string"
                         }
                     }
                 }
@@ -75,16 +91,28 @@
         "rules": {
             "description": "The type of the event",
             "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "allowDoubleBooking": {
                     "type": "boolean"
+                },
+                "openHours": {
+                    "type": "object",
+                    "properties": {
+                        "start": {
+                            "type": "string",
+                            "format": "time"
+                        },
+                        "end": {
+                            "type": "string",
+                            "format": "time"
+                        }
+                    },
+                    "required": [
+                        "start", "end"
+                    ]
                 }
             }
         }
-    },
-    "required": [
-        "title",
-        "type",
-        "details"
-    ]
+    }
 }
