@@ -1,5 +1,12 @@
 const { authenticate } = require('feathers-authentication').hooks;
+const { validateSchema } = require('feathers-hooks-common');
 const setDeletedAt = require('../../hooks/setDeletedAt');
+
+const validationSchema = require('../../schemas/resources.validation.json');
+
+const Ajv = require('ajv');
+const ajv = new Ajv({ allErrors: true, $data: true });
+require('ajv-keywords')(ajv, 'select');
 
 const {
     softDelete,
@@ -12,7 +19,7 @@ module.exports = {
         all: [authenticate('jwt'), softDelete()],
         find: [],
         get: [],
-        create: [setCreatedAt('created_at')],
+        create: [validateSchema(validationSchema, ajv), setCreatedAt('created_at')],
         update: [setUpdatedAt('updated_at')],
         patch: [setUpdatedAt('updated_at')],
         remove: [setDeletedAt()]
