@@ -1,4 +1,5 @@
 const { authenticate } = require('feathers-authentication').hooks;
+const ajv = require('ajv')({ allErrors: true, $data: true });
 const {
     setCreatedAt,
     setUpdatedAt,
@@ -8,14 +9,10 @@ const {
 const setDeletedAt = require('../../hooks/setDeletedAt');
 const illegalTimeChecker = require('../../hooks/illegalTimeChecker');
 const setUser = require('../../hooks/set-user');
-
 const validationSchema = require('../../schemas/bookings.validation.json');
-
-const Ajv = require('ajv');
-const ajv = new Ajv({ allErrors: true, $data: true });
-require('ajv-keywords')(ajv, 'select');
-
 const bookingReducer = require('../../hooks/booking-reducer');
+
+require('ajv-keywords')(ajv, 'select');
 
 module.exports = {
     before: {
