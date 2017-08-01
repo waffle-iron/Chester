@@ -47,6 +47,7 @@
     "feathers-socketio": "^2.0.0",
     "helmet": "^3.8.0",
     "ip-regex": "^2.1.0",
+    "json-mapper": "^0.0.12",
     "knex": "^0.13.0",
     "moment": "2.4",
     "moment-timezone": "^0.5.13",

@@ -1518,6 +1518,10 @@ jschardet@^1.4.2:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/jschardet/-/jschardet-1.5.0.tgz#a61f310306a5a71188e1b1acd08add3cfbb08b1e"
 
+json-mapper@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/json-mapper/-/json-mapper-0.0.12.tgz#947615dfa6f367eb609b9feeebabd6cec33885e1"
+
 json-schema-traverse@^0.3.0:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-0.3.1.tgz#349a6d44c53a51de89b40805c5d5e59b417d3340"
