@@ -5,7 +5,7 @@ module.exports = function(options = {}) {
     const template = require('../schemas/bookings.template.json');
     const mapper = require('../lib/mapper');
     // eslint-disable-line no-unused-vars
-    return function arrangeBookingsData(hook) {
+    return function mapData(hook) {
     // Hooks can either return nothing or a promise
     // that resolves with the `hook` object for asynchronous operations
 
@@ -17,6 +17,5 @@ module.exports = function(options = {}) {
             });
             break;
         }
-    // return Promise.resolve(hook);
     };
 };

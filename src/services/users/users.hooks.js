@@ -16,6 +16,8 @@ const restrict = [
     })
 ];
 
+const mapData = require('../../hooks/map-data');
+
 module.exports = {
     before: {
         all: [commonHooks.softDelete()],
@@ -46,7 +48,7 @@ module.exports = {
                 commonHooks.discard('password')
             )
         ],
-        find: [],
+        find: [mapData()],
         get: [],
         create: [],
         update: [],

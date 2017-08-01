@@ -12,6 +12,8 @@ const {
     setUpdatedAt
 } = require('feathers-hooks-common');
 
+const mapData = require('../../hooks/map-data');
+
 module.exports = {
     before: {
         all: [authenticate('jwt'), softDelete()],
@@ -25,7 +27,7 @@ module.exports = {
 
     after: {
         all: [],
-        find: [],
+        find: [mapData()],
         get: [],
         create: [],
         update: [],

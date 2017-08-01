@@ -11,8 +11,7 @@ const setDeletedAt = require('../../hooks/setDeletedAt');
 const illegalTimeChecker = require('../../hooks/illegalTimeChecker');
 const setUser = require('../../hooks/set-user');
 const validationSchema = require('../../schemas/bookings.validation.json');
-
-const arrangeBookingsData = require('../../hooks/arrange-bookings-data');
+const mapData = require('../../hooks/map-data');
 
 module.exports = {
     before: {
@@ -31,7 +30,7 @@ module.exports = {
     },
 
     after: {
-        all: [arrangeBookingsData()],
+        all: [mapData()],
         find: [],
         get: [],
         create: [],
