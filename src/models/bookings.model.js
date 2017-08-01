@@ -13,20 +13,20 @@ module.exports = function(app) {
                 .createTable('bookings', table => {
                     table.increments('id').primary();
                     table.integer('user_id').notNullable();
-                    table.string('title').notNullable();
-                    table.string('description');
-                    table.string('location');
                     table.integer('resource_id').unsigned().notNullable();
                     table.foreign('resource_id').references('resources.id');
-                    table.json('participants');
+                    table.string('title').notNullable();
+                    table.string('type').notNullable();
+                    table.boolean('completed').notNullable().defaultTo(false);
+                    table.string('event_description');
+                    table.string('event_location');
+                    table.json('event_participants');
                     table.timestamp('event_start').notNullable();
                     table.timestamp('event_end').notNullable();
                     table
                         .integer('event_timezone_offset')
                         .notNullable()
                         .defaultTo(new Date().getTimezoneOffset());
-                    table.string('type').notNullable();
-                    table.boolean('completed').notNullable().defaultTo(false);
 
                     table.timestamp('created_at').notNullable();
                     table.timestamp('updated_at');
