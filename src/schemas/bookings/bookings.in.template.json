@@ -1,0 +1,12 @@
+{
+    "id": "bookingId",
+    "user_id": "userId",
+    "title": "title",
+    "type": "type",
+    "resource_id": "resourceId",
+    "event_start": "event.start",
+    "event_end": "event.end",
+    "event_location": "event.location",
+    "event_description": "event.description",
+    "event_participants": "event.participants"
+}
