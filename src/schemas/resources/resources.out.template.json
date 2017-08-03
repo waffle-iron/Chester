@@ -1,17 +1,8 @@
 {
+    "resourceId": "id",
     "name": "name",
     "type": "type",
-    "details": {
-        "what": "details.what",
-        "where": "details.where",
-        "description": "details.description",
-        "firstname": "details.firstname",
-        "lastname": "details.lastname",
-        "phone": "details.phone",
-        "address": "details.address"
-    },
-    "rules": {
-        "allowDoubleBooking": "allow_double_booking",
-        "openHours": "rules.open_hours"
-    }
+    "active": "active",
+    "details": "details",
+    "rules": "rules"
 }
