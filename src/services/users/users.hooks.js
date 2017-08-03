@@ -3,7 +3,7 @@ const { authenticate } = require('feathers-authentication').hooks;
 const commonHooks = require('feathers-hooks-common');
 const { restrictToOwner } = require('feathers-authentication-hooks');
 const setDeletedAt = require('../../hooks/setDeletedAt');
-const validationSchema = require('../../schemas/bookings.validation.json');
+const validationSchema = require('../../schemas/users/users.validation.json');
 const { hashPassword } = require('feathers-authentication-local').hooks;
 
 require('ajv-keywords')(ajv, 'select');
@@ -20,7 +20,9 @@ const mapData = require('../../hooks/map-data');
 
 module.exports = {
     before: {
-        all: [commonHooks.softDelete()],
+        all: [
+            // commonHooks.softDelete()
+        ],
         find: [authenticate('jwt')],
         get: [...restrict],
         create: [
