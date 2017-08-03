@@ -7,6 +7,8 @@ module.exports = function(options = {}) {
     // Hooks can either return nothing or a promise
     // that resolves with the `hook` object for asynchronous operations
         const recentLogin = {};
+        // How many logins to store
+        const historyLogAmount = 10;
         const date = moment().format();
         recentLogin[date] = {
             ip: hook.params.ip,
@@ -21,8 +23,9 @@ module.exports = function(options = {}) {
             .then(profile => {
                 const user = profile.data[0];
                 const history = user.login_history;
-                if (Object.keys(history).length >= 10) {
+                if (Object.keys(history).length >= historyLogAmount) {
                     // It deletes the first object ín the JSON object
+                    // its the oldest login
                     delete history[Object.keys(history)[0]];
                 }
                 user.login_history = Object.assign(history, recentLogin);

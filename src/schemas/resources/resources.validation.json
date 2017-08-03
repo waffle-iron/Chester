@@ -21,9 +21,6 @@
                 "person"
             ]
         },
-        "test": {
-            "type": "boolean"
-        },
         "details": {
             "type": "object",
             "select": {
@@ -49,6 +46,10 @@
                         "description": {
                             "type": "string",
                             "maximum": 400
+                        },
+                        "timezone": {
+                            "type": "string",
+                            "maximum": 100
                         }
                     }
                 },
@@ -83,6 +84,10 @@
                         },
                         "address": {
                             "type": "string"
+                        },
+                        "timezone": {
+                            "type": "string",
+                            "maximum": 100
                         }
                     }
                 }

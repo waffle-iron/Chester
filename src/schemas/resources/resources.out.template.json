@@ -1,0 +1,8 @@
+{
+    "resourceId": "id",
+    "name": "name",
+    "type": "type",
+    "active": "active",
+    "details": "details",
+    "rules": "rules"
+}
