@@ -9,6 +9,7 @@ module.exports = function(options = {}) {
         const app = hook.app;
         // Hooks can either return nothing or a promise
         // that resolves with the `hook` object for asynchronous operations
+
         const start = moment(hook.data.event_start).valueOf();
         const end = moment(hook.data.event_end).valueOf();
 
@@ -28,7 +29,7 @@ module.exports = function(options = {}) {
                 .service('resources')
                 .get(hook.data.resource_id)
                 .then(resource => {
-                    if (resource.allow_double_booking === true) {
+                    if (resource.rules.allowDoubleBooking === true) {
                         Promise.resolve(hook);
                     } else {
                         // return a promise with the bookings
@@ -37,7 +38,7 @@ module.exports = function(options = {}) {
                                 $or: [
                                     {
                                         completed: false,
-                                        resource_id: resource.id,
+                                        resource_id: resource.resourceId,
                                         event_start: {
                                             $gte: hook.data.event_start,
                                             $lt: hook.data.event_end
@@ -45,7 +46,7 @@ module.exports = function(options = {}) {
                                     },
                                     {
                                         completed: false,
-                                        resource_id: resource.id,
+                                        resource_id: resource.resourceId,
                                         event_end: {
                                             $gt: hook.data.event_start,
                                             $lte: hook.data.event_end
