@@ -10,11 +10,9 @@ module.exports = function(options = {}) {
 
     // I'm pretty sure this is a bad way to check which service it is..
         let service = hook.service.table;
-        let outPath =
-      '../schemas/' + service + '/' + service + '.out.template.json';
-        let inPath = '../schemas/' + service + '/' + service + '.in.template.json';
-        const inTemplate = require(inPath);
-        const outTemplate = require(outPath);
+        let path = '../schemas/' + service + '/' + service;
+        const inTemplate = require(path + '.in.template.json');
+        const outTemplate = require(path + '.out.template.json');
         switch (hook.method) {
         case 'find':
             return mapper(hook.result.data, outTemplate).then(result => {
